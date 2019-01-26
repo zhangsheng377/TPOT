@@ -71,7 +71,7 @@ y_test
 
 
 tpot = TPOTRegressor(scoring='neg_mean_absolute_error',
-                     max_time_mins=5,
+                     max_time_mins=60*24*7,
                      n_jobs=-1,
                      verbosity=2,
                      cv=5)
