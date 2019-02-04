@@ -11,8 +11,8 @@ features = data.drop('pm25', axis=1).values
 training_features, testing_features, training_target, testing_target = train_test_split(features, data['pm25'].values, random_state=None)
 
 automl = autosklearn.regression.AutoSklearnRegressor(
-    time_left_for_this_task=60*60,
-    per_run_time_limit=60*6,
+    time_left_for_this_task=60*60*6,
+    per_run_time_limit=60*10,
 )
 print("fit begin")
 automl.fit(training_features, training_target)
