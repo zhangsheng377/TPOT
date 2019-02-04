@@ -13,6 +13,7 @@ from tpot.builtins import OneHotEncoder, StackingEstimator
 from xgboost import XGBRegressor
 from sklearn.metrics.regression import r2_score, mean_squared_error
 import pylab as pl
+#import autokeras
 
 # NOTE: Make sure that the class is labeled 'target' in the data file
 tpot_data = pd.read_csv('airdata.csv', sep=',', dtype=np.float64)
@@ -64,4 +65,19 @@ print(x_range)
 pl.plot(x_range, testing_target, '-g')
 pl.plot(x_range, results, '--r')
 pl.show()
+
+
+
+
+#seconds = 60    # 1 min
+#model = autokeras.ImageRegressor(verbose = True)
+#model.fit(training_features, training_target, time_limit=seconds)
+#model.final_fit(training_features, training_target, testing_features, testing_target, retrain=True)
+# evaluate the Auto-Keras model
+#score = model.evaluate(testing_features, testing_target)
+#predictions = model.predict(testing_features)
+#print(score)
+#pl.plot(x_range, results, '--y')
+#pl.show()
+
 
