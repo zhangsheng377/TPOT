@@ -14,6 +14,7 @@ from xgboost import XGBRegressor
 from sklearn.metrics.regression import r2_score, mean_squared_error
 import pylab as pl
 #import autokeras
+from joblib import dump, load
 
 # NOTE: Make sure that the class is labeled 'target' in the data file
 tpot_data = pd.read_csv('airdata.csv', sep=',', dtype=np.float64)
@@ -64,7 +65,7 @@ x_range = range(training_target.size, training_target.size + testing_target.size
 print(x_range)
 pl.plot(x_range, testing_target, '-g')
 pl.plot(x_range, results, '--r')
-pl.show()
+#pl.show()
 
 
 
@@ -81,3 +82,13 @@ pl.show()
 #pl.show()
 
 
+
+
+autosklearn_ml = load('autosklearn_airdata.joblib')
+predictions = autosklearn_ml.predict(testing_features)
+print('Mean Absolute Error = %0.4f' % np.mean(abs(predictions - testing_target)))
+print('R-squared:%0.4f MSE:%0.4f' % (r2_score(testing_target, predictions), mean_squared_error(testing_target, predictions)))
+x_range = range(training_target.size, training_target.size + testing_target.size)
+print(x_range)
+pl.plot(x_range, predictions, '--y')
+pl.show()
