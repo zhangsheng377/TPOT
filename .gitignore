@@ -1,3 +1,4 @@
 *.pyproj
 *.sln
 .vs/
+venv_ml/
